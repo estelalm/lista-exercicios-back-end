@@ -12,50 +12,49 @@ const calcularTabuadas = function(valorTabuadaInicial, valorTabuadaFinal, valorI
     let contador = valorInicial
     let contadorfinal = valorFinal
 
-    if(tabuadainicial == '' || tabuadafinal == '' || contador == '' || contadorfinal == '')
-        console.log('>> ERRO: É obrigatório informar todos os valores')
-    else if (isNaN(tabuadainicial) || isNaN(tabuadafinal) || isNaN(contador) || isNaN(contadorfinal))
-        console.log('>> ERRO: A tabuada só pode ser gerada com a entrada de números')
-    else if (tabuadainicial > 100 || tabuadainicial <2 || tabuadafinal > 100 || tabuadafinal <2  ){
-        console.log('>> ERRO: Somente tabuadas de 2 até 100')    
-    }else if (contador > 50 || contador < 1 || contadorfinal > 50 || contadorfinal < 1){
-        console.log('>> ERRO: Os valores calculados devem estar entre 1 e 50')
-    }else{
+    //requisitos do sistema A entrada da tabuada deverá ser entre 2 e 100, não sendo permitido outros
+    // valores; Nenhuma entrada de dados deverá ficar sem preenchimento; O valor até onde será 
+    //calculada a tabuada deverá ser entre 1 e 50;
 
-        tabuadainicial = Number(tabuadainicial)
-        tabuadafinal = Number(tabuadafinal)
-        contador = Number(contador)
-        contadorfinal = Number(contadorfinal)
-        
+    if(tabuadainicial == '' || tabuadafinal == '' || contador == '' || contadorfinal == '')
+        console.log('>> ERRO: É obrigatória a entrada de todos os valores')
+    else if (isNaN(tabuadainicial) || isNaN(tabuadafinal) || isNaN(contador) || isNaN(contadorfinal))
+        console.log('>. ERRO: Os valores inseridos devem ser números inteiros.')
+    else if(tabuadainicial < 2 || tabuadainicial > 100 || tabuadafinal < 2 || tabuadafinal > 100)
+        console.log('>> ERRO: Os valores inseridos devem estar entre 2')
+    else if(contador < 1 || contador > 50 || contadorfinal < 1 || contadorfinal > 50)
+        console.log('>> ERRO: Os valores a serem calculados só podem estar entre 1 e 50')   
+    else{
 
         let resultado
         let status = false
 
-        if(tabuadainicial < tabuadafinal){
+        //se os valores forem invertidos, mudar para não dar erro
+        if(tabuadainicial> tabuadafinal){
             tabuadainicial = valorTabuadaFinal
-            tabuadafinal = valorTabuadaFinal
+            tabuadafinal = valorTabuadaInicial
         }
-        if(contador < contadorfinal){
+        if(contador > contadorfinal){
             contador = valorFinal
             contadorfinal = valorInicial
         }
 
-        while(tabuadainicial <= tabuadafinal){
+        //fazer cada tabuada
+        for(;tabuadainicial <= tabuadafinal; tabuadainicial++){
+            console.log()
             console.log('Tabuada do ' + tabuadainicial)
             for(;contador <= contadorfinal;contador++){
                 resultado = tabuadainicial * contador
-                status = true
-                console.log(`${tabuada} x ${contador} = ${resultado}`)
+                console.log(`${tabuadainicial} x ${contador} = ${resultado}`)
             }
-            tabuadainicial++
+            contador = valorInicial
+            status = true
         }
 
         return status
-
     }
-
-
 }
 
-calcularTabuadas('2', '5', '1', '10')
-console.log(calcularTabuadas('5', '2', '1', '10'))
+module.exports={
+    calcularTabuadas
+}
