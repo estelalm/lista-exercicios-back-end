@@ -1,3 +1,4 @@
+const { type } = require('os')
 var fatorial = require ('./modulo/fatorial.js')
 
 var readline = require ('readline')
@@ -7,9 +8,10 @@ var entradaDados = readline.createInterface({
 })
 
 entradaDados.question('Digite o valor: ', function(valorDigitado){
-    let valor = valorDigitado
 
-    console.log('Fatorial de ' + valor + ': ' + fatorial.calcularFatorial(valor))
+    let valor = valorDigitado
+    fatorial.calcularFatorial(valor)
 
     entradaDados.close()
+
 })
