@@ -5,21 +5,20 @@
  * Versão: 1.0
  ***********************************************************/
 
-const calcularMedia = function (nota1, nota2, nota3, nota4, nota5){
+const calcularMedia = function (nota1, nota2, nota3, nota4){
 
     let n1 = Number(nota1.replace(',', '.'))
     let n2 = Number(nota2.replace(',', '.'))
     let n3 = Number(nota3.replace(',', '.'))
     let n4 = Number(nota4.replace(',', '.'))
-    let n5 = Number(nota5.replace(',', '.'))
     let media
     
-    if(n1 == '' || n2 == '' || n3 == '' ||n4 == '' ||n5 == '' || isNaN(n1) || isNaN(n2)|| isNaN(n3) || isNaN(n4) || isNaN(n5))
+    if(n1 == '' || n2 == '' || n3 == '' ||n4 == '' || isNaN(n1) || isNaN(n2)|| isNaN(n3) || isNaN(n4))
         console.log('ERRO: Todas as notas devem ser preenchidas com números.')
-    else if(n1 > 100 || n2 > 100 || n3 > 100 ||n4 > 100 ||n5 > 100 || n1 < 0 || n2 < 0 || n3 < 0 ||n4 < 0 ||n5 < 0)
+    else if(n1 > 100 || n2 > 100 || n3 > 100 ||n4 > 100 || n1 < 0 || n2 < 0 || n3 < 0 ||n4 < 0)
         console.log('ERRO: As notas só podem estar entre 0 e 100') 
     else
-        media = (n1+n2+n3+n4+n5)/5
+        media = (n1+n2+n3+n4)/4
 
     return media;
     

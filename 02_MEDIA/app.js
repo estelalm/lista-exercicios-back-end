@@ -54,33 +54,27 @@ entradaDados.question('Nome do aluno: ', function (nomeAluno) {
                                         let n4 = nota4
 
 
-                                        entradaDados.question('Nota 5: ', function (nota5) {
 
-                                            n5 = nota5
+                                        let mediaFinal = media.calcularMedia(n1, n2, n3, n4)
 
+                                        if (mediaFinal != undefined) {
+                                            let situacao = media.mostrarSituacao(mediaFinal)
+                                            console.log('')
+                                            media.mostrarRelatorio(aluno, generoAluno, curso, disciplina, professor, generoProfessor, mediaFinal)
+                                            if (situacao == 'para exame') {
+                                                entradaDados.question('Nota do aluno no exame: ', function (notaExame) {
 
-                                            let mediaFinal = media.calcularMedia(n1, n2, n3, n4, n5)
+                                                    let exame = notaExame
+                                                    let mediaExame = media.calcularExame(mediaFinal, exame)
+                                                    media.mostrarSituacaoFinal(mediaExame)
 
-                                            if(mediaFinal != undefined){
-                                                let situacao = media.mostrarSituacao(mediaFinal)
+                                                })
+                                            } else {
                                                 console.log('')
-                                                media.mostrarRelatorio(aluno, generoAluno, curso, disciplina, professor, generoProfessor, mediaFinal)
-                                                if(situacao =='para exame'){
-                                                    entradaDados.question('Nota do aluno no exame: ', function(notaExame){
-    
-                                                        let exame = notaExame
-                                                        let mediaExame = media.calcularExame(mediaFinal, exame)
-                                                        media.mostrarSituacaoFinal(mediaExame)
-    
-                                                    })
-                                                }else{
-                                                    console.log('')
-                                                }
+                                                
                                             }
-
                                             
-
-                                        })
+                                        }
 
 
                                     })
