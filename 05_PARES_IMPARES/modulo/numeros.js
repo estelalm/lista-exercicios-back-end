@@ -7,9 +7,9 @@
 
 const identificarNumeros = function(numeroInicial, numeroFinal, escolhausuario){
 
-    let inicial = numeroInicial
-    let final = numeroFinal
-    let escolha = escolhausuario
+    let inicial = Number(numeroInicial)
+    let final = Number(numeroFinal)
+    let escolha = Number(escolhausuario)
 
     if (inicial == '' || final == '')
     console.log('>>ERRO: É obrigatória a entrada de todos os valores')
@@ -42,7 +42,7 @@ const identificarNumeros = function(numeroInicial, numeroFinal, escolhausuario){
         }
 
         if(escolha==2 || escolha==3){        
-        inicial = numeroInicial
+        inicial = Number(numeroInicial)
         console.log()
         console.log('Números ímpares')
         for(;inicial<=final;inicial++){
